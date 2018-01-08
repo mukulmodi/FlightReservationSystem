@@ -25,6 +25,4 @@ public class Reservation
 		return price;
 	}
 
-
-
 }
