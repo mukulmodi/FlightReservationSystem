@@ -13,9 +13,9 @@ public class Flight
 {
 	private final String flightNumber; // flight number
 	private final int numSeats; // number of available seats
-	private int pricePerSeat; // cost per 1 seat on the flight
 	private final String origin; // origin code for flight
 	private final String destination; // destination code for flight
+	private int pricePerSeat; // cost per 1 seat on the flight
 	private List<Integer> seatsAvailable; // seats that have been selected on the flight
 	//hold reservation list
 	private Map<Passenger,Reservation> reservationMap;
@@ -106,5 +106,20 @@ public class Flight
 	{
 		seatsAvailable.add(seatNumber);
 	}
+
+	/**
+	 * Cancels a reservation. Adds seat back to the pool, removes from reservation map
+	 * @param res Reservation to be cancelled
+	 */
+	public void cancelReservation(Reservation res)
+	{
+		//check if the reservation exists
+		if(reservationMap.get(res.getPassenger()) != null)
+		{
+			reservationMap.remove(res.getPassenger());
+			seatsAvailable.add(res.getSeatNumber()); // add back to seatList
+		}
+	}
+
 
 }
