@@ -20,10 +20,11 @@ public class Flight
 	//hold reservation list
 	private Map<Passenger,Reservation> reservationMap;
 
-	public Flight(String flightNum, int numSeats, String origin, String dest)
+	public Flight(String flightNum, int numSeats,int pricePerSeat, String origin, String dest)
 	{
 		this.flightNumber = flightNum;
 		this.numSeats = numSeats;
+		this.pricePerSeat = pricePerSeat;
 		this.origin = origin;
 		this.destination = dest;
 		seatsAvailable = new LinkedList<>(); // LinkedList connecting seats to each other
@@ -66,6 +67,7 @@ public class Flight
 	{
 		this.pricePerSeat = newPrice;
 	}
+
 	/**
 	 * Adds the passenger to the list of reservations on the flight
 	 * @param reservation Reservation object containing passenger and essential information to be added to the flight
